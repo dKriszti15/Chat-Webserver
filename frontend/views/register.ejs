@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <% if(message){%>
+        <p><%=message%></p>
+    <%}%>
+    <form action="/register" method="POST">
+        <p>Username:<input type="text" name="username"></p>
+        <p>Password:<input type="password" name="password"></p>
+        <p>Password again:<input type="password" name="passwordagain"></p>
+        <select name="role" required>
+          <option value="user">User</option>
+        </select>
+        <button type="submit" class="registerButton">Register!</button>
+      </form>
+  
+</body>
+</html>
