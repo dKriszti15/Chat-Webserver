@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+
+<%- include('partials/head.ejs', {title:'Login'}) %>
+
 <body>
     <% if(message){%>
         <p><%=message%></p>
@@ -13,7 +10,9 @@
     <form action="/login" method="POST">
         <p>Username:<input type="text" name="username"></p>
         <p>Password:<input type="password" name="password"></p>
+        <button type="submit" class="loginButton">Login!</button>
     </form>
-    <button>Login</button>
+    <%- include('partials/loggedUser.ejs') %>
+    <%- include('partials/tomainpage.ejs') %>
 </body>
 </html>

@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+
+<%- include('partials/head.ejs', {title:'Register'}) %>
+
 <body>
     <% if(message){%>
         <p><%=message%></p>
@@ -19,6 +16,10 @@
         </select>
         <button type="submit" class="registerButton">Register!</button>
       </form>
-  
+      <% if(loggedUser){ %>
+        <p><%=loggedUser%></p>
+      <% } %>
+      <%- include('partials/loggedUser.ejs') %>
+      <%- include('partials/tomainpage.ejs') %>
 </body>
 </html>
