@@ -13,6 +13,12 @@ def.get('/', (req, res) => {
     res.status(200).render('index.ejs');
 })
 
+def.get('/login', (req,res) => {
+    res.status(200).render('login.ejs', { message: ''});
+})
+
+
+
 def.get('/register', (req,res) =>  {
     res.status(200).render('register.ejs', { message: ''});
 })
