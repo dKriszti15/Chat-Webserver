@@ -4,10 +4,14 @@
 <%- include('partials/head.ejs', {title:'Main Page'}) %>
 
 <body>
+
+    <%- include('partials/message.ejs') %>
+
     <p><a href="/register">Register</a></p>
 
     <% if(loggedUser) {%>
-        <p><a href="/logout">Logout</a></p>
+        <p><a href="/logout">Logout</a></p> 
+        <p><a href="/modifyCredentials">Modify credentials</a></p>
     <%} else { %>
         <p><a href="/login">Login</a></p> 
     <% } %>

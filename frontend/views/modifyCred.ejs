@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head.ejs', {title:'Modify credentials'}) %>
+<body>
+    <form action="/modifyCredentials" method="POST">
+        <p>New Username:<input type="text" name="newusername"></p>
+        <p>New Password:<input type="password" name="newpassword"></p>
+        <p>New Password again:<input type="password" name="newpasswordagain"></p>
+        <button type="submit" class="modifyButton">Modify!</button>
+      </form>
+      <%- include('partials/loggedUser.ejs') %>
+</body>
+</html>

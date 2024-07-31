@@ -10,7 +10,7 @@ const def = express.Router();
 //def.use(express.static(staticDir));
 
 def.get('/', (req, res) => {
-    res.status(200).render('index.ejs', {loggedUser: ''});
+    res.status(200).render('index.ejs', { message: '', loggedUser: ''});
 })
 
 def.get('/login', (req,res) => {
@@ -28,7 +28,7 @@ def.post('/login', express.json(), async (req, res) => {
             req.session.username = req.body.username;
             const role = await Users.getUserRole(req.body.username);
             req.session.role = role;
-            res.status(200).render('index.ejs', {message: `Welcome, ${req.body.username}!`,loggedUser: req.session.username});
+            res.status(200).render('profile.ejs', {message: `Welcome, ${req.body.username}!`,loggedUser: req.session.username});
         }else{
             res.status(405).render('login.ejs', {message: 'Wrong password! Try again!', loggedUser: ''});
         }
@@ -56,14 +56,14 @@ def.post('/register', async (req, res) => {
     if(!users.some((row) => row.username === req.body.username)){
         if(req.body.password === req.body.passwordagain){
             req.body.password = await bcrypt.hash(req.body.password,10);
-            await Users.insertUser(req.body.username, req.body.password, req.body.role);
-            res.status(200).render('register.ejs', { message: 'Succesfully registered!'});
+            await Users.insertUser(req.body.username, req.body.password);
+            res.status(200).render('index.ejs', { message: 'Succesfully registered!', loggedUser: ''});
         }
         else{
-            res.status(200).render('register.ejs', { message: 'The passwords do not match!' });
+            res.status(200).render('register.ejs', { message: 'The passwords do not match!', loggedUser: '' });
         }
     } else {
-        res.status(200).render('register.ejs', { message: 'This user already exists!' });
+        res.status(200).render('register.ejs', { message: 'This user already exists!', loggedUser: '' });
     }
 })
 

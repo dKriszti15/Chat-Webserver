@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head.ejs', {title:`${loggedUser}'s profile`}) %>
+<body>
+    <%- include('partials/message.ejs') %>
+    <%- include('partials/loggedUser.ejs') %>
+
+    <ul id="messages">CHATS</ul>
+    <input id="<%=loggedUser%>textbox" type="text">
+    <button id="<%=loggedUser%>-send" class="sendButton">Send</button>
+
+    <script src="messageManagement.js"></script>
+</body>
+</html>

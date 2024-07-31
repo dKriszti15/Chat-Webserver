@@ -6,6 +6,7 @@ import session from 'express-session'
 import mysql from 'mysql2/promise.js'
 import def from './routers/default.js'
 import fs from 'fs/promises'
+import userRouter from './routers/userSpec.js'
 
 const app = express();
 
@@ -44,5 +45,7 @@ app.use(express.json());
 app.use(morgan('tiny'));
 
 app.use('/', def); 
+
+app.use('/', userRouter);
 
 app.listen(8080);

@@ -121,4 +121,11 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
   }
+
+  a{
+    background-color: #e3a66a;
+    border-radius: 5px;
+    align-content: center;
+    padding: 5px;
+  }
   
