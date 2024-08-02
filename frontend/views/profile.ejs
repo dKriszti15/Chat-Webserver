@@ -5,10 +5,16 @@
     <%- include('partials/message.ejs') %>
     <%- include('partials/loggedUser.ejs') %>
 
-    <ul id="messages">CHATS</ul>
-    <input id="<%=loggedUser%>textbox" type="text">
-    <button id="<%=loggedUser%>-send" class="sendButton">Send</button>
+    <ul id="messageContainer">CHATS</ul>
+    
+    <form id="messageSendingForm">
+        <input id="messageInput" type="text">
+        <button type="submit" id="<%=loggedUser%>-send" class="sendButton">Send</button>
+    </form>
 
     <script src="messageManagement.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+    
 </body>
 </html>

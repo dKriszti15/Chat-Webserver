@@ -6,6 +6,9 @@ import mysql from 'mysql2/promise.js'
 import def from './routers/default.js'
 import fs from 'fs/promises'
 import userRouter from './routers/userSpec.js'
+import { Server } from 'socket.io'
+
+const PORT = process.env.PORT || 8000;
 
 const app = express();
 
@@ -47,4 +50,30 @@ app.use('/', def);
 
 app.use('/', userRouter);
 
-app.listen(8080);
+const server = app.listen(PORT, () => {
+  console.log(`Server running on port: ${PORT} ...`);
+});
+
+const io = new Server(server);
+
+let connectedSockets = new Set();
+
+io.on('connection', onConnection)
+
+function onConnection(socket) {
+  connectedSockets.add(socket.id);
+
+  console.log('Socket connected: ', socket.id);
+
+  io.emit('clients-total', connectedSockets.size)
+
+  socket.on('disconnect', () => {
+    console.log('Socket disconnected: ', socket.id);
+    connectedSockets.delete(socket.id);
+    io.emit('clients-total', connectedSockets.size)
+  })
+
+  socket.on('message', (data) => {
+    socket.broadcast.emit('chatMessage', data)
+  })
+}
