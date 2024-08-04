@@ -128,5 +128,33 @@ body {
     align-content: center;
     padding: 5px;
   }
+
+  #messageContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #8b8888;  
+    width: 800px;
+    height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    align-self: flex-start;
+    padding: 20px;
+  }
+
+  .messageRight{
+    align-self: flex-end;
+    background-color: aquamarine;
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  .messageLeft{
+    align-self: flex-start;
+    background-color: rgb(57, 167, 218);
+    border-radius: 10px;
+    padding: 15px;
+  }
   
-  
+  ul{
+    list-style-type: none;
+  }
