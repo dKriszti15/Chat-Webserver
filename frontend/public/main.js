@@ -25,7 +25,7 @@ function sendMessage(){
         message: messageInput.value,
         dateTime: new Date()
     }
-    
+
     let datePart = msg.dateTime.toString().split('T')[0];
     datePart = datePart.replace(/ /g,'/');
     datePart = datePart.split(':')[0] + ':' + datePart.split(':')[1];

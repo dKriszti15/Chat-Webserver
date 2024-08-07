@@ -2,16 +2,17 @@
 <html lang="en">
     <%- include('partials/head.ejs', {title:`${loggedUser}'s profile`}) %>
 <body>
-    <%- include('partials/message.ejs') %>
-    <%- include('partials/loggedUser.ejs') %>
-
-    <ul id="messageContainer">CHATS</ul>
     
-    <form id="messageSendingForm">
+    <div id="content">
+        <%- include('partials/message.ejs') %>
+        <%- include('partials/loggedUser.ejs') %>
+        <ul id="messageContainer">CHATS</ul>
+        <form id="messageSendingForm">
         <input id="messageInput" type="text">
         <button type="submit" id="<%=loggedUser%>-send" class="sendButton">Send</button>
     </form>
-
+    </div>
+    
     <script src="messageManagement.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="main.js"></script>
