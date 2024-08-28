@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/head.ejs', {title:`${loggedUser}'s profile`}) %>
-<body>
-    
+  <%- include('partials/head.ejs', { title: `${loggedUser}'s profile` }) %>
+  <body>
     <div id="content">
-        <%- include('partials/message.ejs') %>
-        <%- include('partials/loggedUser.ejs') %>
-        <ul id="messageContainer">CHATS</ul>
-        <form id="messageSendingForm">
-        <input id="messageInput" type="text">
-        <input id="toUser" type="text">
-        <button type="submit" id="<%=loggedUser%>-send" class="sendButton">Send</button>
-    </form>
+      <%- include('partials/message.ejs') %>
+      <%- include('partials/loggedUser.ejs') %>
+      <ul id="messageContainer">CHATS</ul>
+      <form id="messageSendingForm">
+        <div id="toUserInputDiv" class="form-group">
+          <label for="toUser" id="toUserInputLabel">To:</label>
+          <select id="toUser">
+            <% connectedUsers.forEach(user => { %>
+              <% if (user !== loggedUser) { %>
+                <option value="<%= user %>"><%= user %></option>
+              <% } %>
+            <% }); %>
+            <option value="everyone">everyone</option>
+          </select>
+        </div>
+        <div id="messageInputDiv" class="form-group">
+          <label for="messageInput">Type:</label>
+          <input id="messageInput" type="text">
+        </div>
+        <button type="submit" id="<%= loggedUser %>-send" class="sendButton">Send</button>
+      </form>
     </div>
-    
     <script src="messageManagement.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="main.js"></script>
-    
-</body>
+  </body>
 </html>

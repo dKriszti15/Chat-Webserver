@@ -28,21 +28,21 @@ function sendMessage(){
 
   let msg;
 
-  if(toUsername){
+  if(toUsername === 'everyone'){
+    msg = {
+      from: loggedUser,
+      to: '',
+      message: messageInput.value,
+      dateTime: new Date().toLocaleString()
+    }
+  } else {
     msg = {
     from: loggedUser,
     to: toUsername,
     message: messageInput.value,
     dateTime: new Date().toLocaleString()
     }
-  } else {
-    msg = {
-    from: loggedUser,
-    to: '',
-    message: messageInput.value,
-    dateTime: new Date().toLocaleString()
-  }
-  }
+  } 
 
   if ( msg.to === '' ){
     socket.emit('message', msg);
